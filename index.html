@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modal Verbs Test – Grade 9</title>
+<style>
+:root{--bg:#f3f6fb;--card:#fff;--ink:#17223a;--muted:#5a6579;--line:#d3dae6;--accent:#2f5d9e;--accent-ink:#fff;--ok:#1f7a4d;--okbg:#e3f4ea;--bad:#b3392f;--badbg:#fbe9e7;--tint:#e8eef8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1626;--card:#18223a;--ink:#e8edf7;--muted:#9aa6bd;--line:#2b3957;--accent:#7fa8e8;--accent-ink:#0f1626;--ok:#6fd49d;--okbg:#17352a;--bad:#ff9a90;--badbg:#3b1f1f;--tint:#1f2d4a}}
+:root[data-theme="dark"]{--bg:#0f1626;--card:#18223a;--ink:#e8edf7;--muted:#9aa6bd;--line:#2b3957;--accent:#7fa8e8;--accent-ink:#0f1626;--ok:#6fd49d;--okbg:#17352a;--bad:#ff9a90;--badbg:#3b1f1f;--tint:#1f2d4a}
+*{box-sizing:border-box}
+html{scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--accent);color:var(--accent-ink);padding:28px 20px 24px}
+header div,main{max-width:760px;margin:0 auto}
+h1{font:700 32px/1.15 Georgia,"Times New Roman",serif;margin:0 0 6px}
+header p{margin:0;opacity:.92}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 20px}
+.bar div{max-width:760px;margin:0 auto;display:flex;align-items:center;gap:14px;font-size:15px;color:var(--muted)}
+.track{flex:1;height:8px;background:var(--tint);border-radius:4px;overflow:hidden}
+.fill{height:100%;width:0;background:var(--accent);transition:width .25s}
+main{padding:20px}
+.who{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.who label{flex:1 1 200px;font-size:14px;color:var(--muted)}
+input[type=text],textarea,select{width:100%;font:inherit;padding:9px 11px;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink)}
+input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:1px}
+section{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:18px 0}
+h2{font:700 22px/1.25 Georgia,serif;margin:0 0 4px}
+.pts{color:var(--muted);font-size:14px;margin:0 0 12px}
+.q{padding:12px 0;border-top:1px solid var(--line)}
+.q p{margin:0 0 8px}
+.n{font-weight:700;color:var(--accent);margin-right:6px}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opts label{border:1px solid var(--line);border-radius:6px;padding:7px 14px;cursor:pointer;background:var(--card)}
+.opts input{margin-right:6px}
+.opts label:has(input:checked){border-color:var(--accent);background:var(--tint)}
+select{width:auto;min-width:130px}
+.fb{margin-top:8px;padding:7px 11px;border-radius:6px;font-size:15px}
+.fb.ok{background:var(--okbg);color:var(--ok)}
+.fb.no{background:var(--badbg);color:var(--bad)}
+.hint{color:var(--muted);font-size:15px}
+.mrow{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+button{font:inherit;font-weight:600;border:0;border-radius:8px;padding:12px 26px;cursor:pointer;background:var(--accent);color:var(--accent-ink)}
+button.alt{background:var(--tint);color:var(--ink)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin:22px 0 40px}
+#res{display:none;border:2px solid var(--accent)}
+.big{font:700 44px/1 Georgia,serif;color:var(--accent)}
+.row{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding:7px 0}
+@media (max-width:560px){h1{font-size:26px}.mrow{grid-template-columns:1fr}}
+@media print{.bar,.actions{display:none}header{background:none;color:#000}}
+</style>
+</head>
+<body>
+<header><div>
+<h1>Modal Verbs Test</h1>
+<p>Grade 9 · Module 3 “Earth &amp; our place on it” · modals and modals of deduction</p>
+</div></header>
+<div class="bar"><div><span id="cnt">0 / 36 answered</span><span class="track"><span class="fill" id="fill"></span></span></div></div>
+<main>
+<div class="who">
+<label>Name<input type="text" id="name" autocomplete="name"></label>
+<label>Class<input type="text" id="cls" placeholder="9 «A»"></label>
+</div>
+<div id="test"></div>
+<div class="actions">
+<button id="check">Check my answers</button>
+<button class="alt" id="reset">Start again</button>
+</div>
+<section id="res" aria-live="polite"></section>
+</main>
+<script>
+var MD=["must","can’t","might","could"];
+var P=[
+{t:"Part 1. Choose the correct answer",pts:10,ty:"c",it:[
+["You ____ wear a seat belt in the car. It’s the law.",["can","must","might"],1],
+["____ I borrow your dictionary, please?",["May","Must","Should"],0],
+["When I was five, I ____ already read short stories.",["can","could","must"],1],
+["You ____ eat so many sweets. They are bad for your teeth.",["shouldn’t","can’t","needn’t"],0],
+["You ____ come with me if you don’t want to.",["mustn’t","needn’t","can’t"],1],
+["Students ____ use phones during the exam. It is forbidden.",["don’t have to","needn’t","mustn’t"],2],
+["He ____ be at home. His car is in front of the house.",["must","can’t","shouldn’t"],0],
+["She ____ be a doctor. She is only fifteen.",["must","can’t","might"],1],
+["____ you help me with my homework, please?",["Could","Must","Ought"],0],
+["We ____ leave now, or we’ll miss the train.",["have to","don’t have to","might not"],0]]},
+{t:"Part 2. Modals of deduction",pts:8,ty:"s",d:"Choose must, can’t, might or could.",it:[
+["Ali is yawning all the time. He ___ be tired.",["must"]],
+["The lights are off and nobody answers the door. They ___ be at home.",["can’t"]],
+["I’m not sure, but Dana ___ be in the library.",["might","could"]],
+["That ___ be Aida’s bag. She always carries a red one.",["must"]],
+["Look at the clouds! It ___ rain later, but I’m not sure.",["might","could"]],
+["He ___ be hungry. He has just had a huge lunch.",["can’t"]],
+["The museum is closed today, so it ___ be open. There is a sign on the door.",["can’t"]],
+["Sauran was on the Silk Road, so it ___ have been a very rich city.",["must"]]]},
+{t:"Part 3. Matching",pts:6,ty:"m",d:"What does each sentence express?",F:["advice","permission","obligation","no necessity","prohibition","ability in the past"],it:[
+["You must do your homework.",2],["You mustn’t smoke here.",4],["You don’t have to pay.",3],
+["You should see a doctor.",0],["She could speak French at six.",5],["May I come in?",1]]},
+{t:"Part 4. Find and correct the mistake",pts:6,ty:"t",d:"Each sentence has one mistake. Type the correct sentence.",it:[
+["She can to play the guitar very well.",["she can play the guitar very well"]],
+["You mustn’t to be late for school.",["you mustn't be late for school"]],
+["He must goes to the dentist.",["he must go to the dentist"]],
+["Do I must wear a uniform?",["must i wear a uniform","do i have to wear a uniform"]],
+["They don’t must pay for the museum.",["they don't have to pay for the museum"]],
+["We should to listen to our teachers.",["we should listen to our teachers"]]]},
+{t:"Part 5. Rewrite the sentences",pts:6,ty:"t",d:"Use the word in brackets. Do not change the meaning.",it:[
+["Perhaps he is late. (might)",["he might be late"]],
+["I’m sure she is a teacher. (must)",["she must be a teacher"]],
+["It isn’t necessary to bring food. (have)",["you don't have to bring food","we don't have to bring food"]],
+["Smoking is forbidden here. (mustn’t)",["you mustn't smoke here","we mustn't smoke here"]],
+["I advise you to rest. (should)",["you should rest"]],
+["I’m sure he isn’t asleep. (can’t)",["he can't be asleep"]]]}
+];
+var $=function(i){return document.getElementById(i)};
+var h="",k=0;
+P.forEach(function(p,pi){
+ h+='<section><h2>'+p.t+'</h2><p class="pts">'+p.pts+' points'+(p.d?' · '+p.d:'')+'</p>';
+ p.it.forEach(function(q,qi){
+  var id=pi+"_"+qi;k++;
+  h+='<div class="q" id="q'+id+'"><p><span class="n">'+(qi+1)+'.</span>'+q[0]+'</p>';
+  if(p.ty=="c"){h+='<div class="opts">';q[1].forEach(function(o,oi){h+='<label><input type="radio" name="a'+id+'" value="'+oi+'">'+String.fromCharCode(97+oi)+') '+o+'</label>'});h+='</div>'}
+  if(p.ty=="s"){h+='<select name="a'+id+'" aria-label="Answer '+(qi+1)+'"><option value="">Choose…</option>'+MD.map(function(o){return '<option>'+o+'</option>'}).join("")+'</select>'}
+  if(p.ty=="m"){h+='<select name="a'+id+'" aria-label="Function"><option value="">Choose…</option>'+p.F.map(function(o,oi){return '<option value="'+oi+'">'+String.fromCharCode(65+oi)+') '+o+'</option>'}).join("")+'</select>'}
+  if(p.ty=="t"){h+='<input type="text" name="a'+id+'" autocomplete="off" autocapitalize="off" spellcheck="false">'}
+  h+='<div class="fb" hidden></div></div>'});
+ h+='</section>'});
+h+='<section><h2>Part 6. Writing</h2><p class="pts">4 points · Your friend is going to visit the ancient city of Sauran. Write 3–4 sentences with advice and rules. Use at least four different modal verbs (should, must, mustn’t, can, could, might, don’t have to) and one modal of deduction.</p><textarea id="wr" rows="6" aria-label="Writing task"></textarea><div class="fb" id="wfb" hidden></div></section>';
+$("test").innerHTML=h;
+function nz(s){return s.toLowerCase().replace(/[’‘`]/g,"'").replace(/\bdo not\b/g,"don't").replace(/\bmust not\b/g,"mustn't").replace(/\bcan not\b|\bcannot\b/g,"can't").replace(/[.!?]+$/,"").replace(/\s+/g," ").trim()}
+function val(id){var e=document.getElementsByName("a"+id);for(var i=0;i<e.length;i++){if(e[i].type=="radio"){if(e[i].checked)return e[i].value}else return e[i].value}return ""}
+function upd(){var n=0;P.forEach(function(p,pi){p.it.forEach(function(q,qi){if(val(pi+"_"+qi).trim()!=="")n++})});
+ $("cnt").textContent=n+" / 36 answered";$("fill").style.width=(n/36*100)+"%"}
+$("test").addEventListener("input",upd);$("test").addEventListener("change",upd);
+function show(id,ok,msg){var f=$("q"+id).querySelector(".fb");f.hidden=false;f.className="fb "+(ok?"ok":"no");f.textContent=(ok?"✓ Correct":"✗ ")+(ok?"":msg)}
+$("check").onclick=function(){
+ var tot=0,rows=[];
+ P.forEach(function(p,pi){var s=0;
+  p.it.forEach(function(q,qi){var id=pi+"_"+qi,v=val(id).trim(),ok=false,ans="";
+   if(p.ty=="c"){ok=v!==""&&+v===q[2];ans=String.fromCharCode(97+q[2])+") "+q[1][q[2]]}
+   if(p.ty=="s"){ok=q[1].indexOf(v)>-1;ans=q[1].join(" / ")}
+   if(p.ty=="m"){ok=v!==""&&+v===q[1];ans=String.fromCharCode(65+q[1])+") "+p.F[q[1]]}
+   if(p.ty=="t"){ok=q[1].indexOf(nz(v))>-1;ans=q[1][0].charAt(0).toUpperCase()+q[1][0].slice(1).replace(/\bi\b/g,"I")+"."}
+   if(ok)s++;show(id,ok,"Correct answer: "+ans)});
+  tot+=s;rows.push([p.t,s,p.pts])});
+ var w=$("wr").value,low=nz(w),ms=["should","must","mustn't","can","could","might","may","don't have to","have to","needn't"],found=ms.filter(function(m){return new RegExp("\\b"+m.replace("'","'")+"\\b").test(low)}),
+ ded=/\b(must|can't|might|could|may)\s+(be|have)\b/.test(low),ws=(found.length>=4?1:0)+(ded?1:0),f=$("wfb");
+ f.hidden=false;f.className="fb "+(ws==2?"ok":"no");
+ f.textContent="Automatic check: "+found.length+" different modals found"+(found.length>=4?" ✓":" (need 4)")+"; modal of deduction "+(ded?"found ✓":"not found ✗")+". Your teacher will read the text and give the remaining points.";
+ var all=tot+ws,r=$("res");
+ r.style.display="block";
+ r.innerHTML='<h2>Your result</h2><p class="hint">'+($("name").value||"Student")+($("cls").value?" · "+$("cls").value:"")+'</p><p class="big">'+all+' / 38</p><p class="hint">Parts 1–5: '+tot+' / 36 · Writing (automatic part): '+ws+' / 2. The teacher adds up to 2 points after reading your text, so the final score is out of 40.</p>'+
+ rows.map(function(x){return '<div class="row"><span>'+x[0]+'</span><b>'+x[1]+' / '+x[2]+'</b></div>'}).join("")+
+ '<p class="hint" style="margin-top:12px">Scroll up to see the correct answer for every mistake.</p>';
+ r.scrollIntoView({behavior:"smooth",block:"start"})};
+$("reset").onclick=function(){if(true){$("test").querySelectorAll("input,select,textarea").forEach(function(e){if(e.type=="radio")e.checked=false;else e.value=""});$("wr").value="";document.querySelectorAll(".fb").forEach(function(e){e.hidden=true});$("res").style.display="none";upd();window.scrollTo(0,0)}};
+</script>
+</body>
+</html>
